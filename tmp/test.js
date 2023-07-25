@@ -1,20 +1,20 @@
 #! /usr/bin/env node
 
 global.sys = require(/^v0\.[012]/.test(process.version) ? "sys" : "util");
-var fs = require("fs");
-var uglify = require("uglify-js"), // symlink ~/.node_libraries/uglify-js.js to ../uglify-js.js
+let fs = require("fs");
+let uglify = require("uglify-js"), // symlink ~/.node_libraries/uglify-js.js to ../uglify-js.js
     jsp = uglify.parser,
     pro = uglify.uglify;
 
-var code = fs.readFileSync("hoist.js", "utf8");
-var ast = jsp.parse(code);
+let code = fs.readFileSync("hoist.js", "utf8");
+let ast = jsp.parse(code);
 
 ast = pro.ast_lift_variables(ast);
 
-var w = pro.ast_walker();
+let w = pro.ast_walker();
 ast = w.with_walkers({
         "function": function() {
-                var node = w.dive(this); // walk depth first
+                let node = w.dive(this); // walk depth first
                 console.log(pro.gen_code(node, { beautify: true }));
                 return node;
         },
