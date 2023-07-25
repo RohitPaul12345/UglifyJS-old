@@ -1,15 +1,15 @@
 #! /usr/bin/env node
 global.DIGITS_OVERRIDE_FOR_TESTING = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ$_0123456789";
 
-var parseJS = require("../lib/parse-js");
-var sys = require("util");
+let parseJS = require("../lib/parse-js");
+let sys = require("util");
 
 // write debug in a very straightforward manner
-var debug = function(){
+let debug = function(){
         sys.log(Array.prototype.slice.call(arguments).join(', '));
 };
 
-var testsPassed = true;
+let testsPassed = true;
 
 ParserTestSuite(function(i, input, desc){
 	try {
@@ -24,7 +24,7 @@ ParserTestSuite(function(i, input, desc){
 process.exit(testsPassed ? 0 : 1);
 
 function ParserTestSuite(callback){
-	var inps = [
+	let inps = [
 		["var abc;", "Regular variable statement w/o assignment"],
 		["var abc = 5;", "Regular variable statement with assignment"],
 		["/* */;", "Multiline comment"],
@@ -403,7 +403,7 @@ function ParserTestSuite(callback){
                 ['if (true) /=a/.test("a");', 'regexp starting with "=" in not obvious context (not implied by preceding token)']
 	];
 
-	for (var i=0; i<inps.length; ++i) {
+	for (let i=0; i<inps.length; ++i) {
 		callback(i, inps[i][0], inps[i][1]);
 	};
 };
