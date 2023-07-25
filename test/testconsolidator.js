@@ -7,7 +7,7 @@ global.DIGITS_OVERRIDE_FOR_TESTING = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOP
      onevar:true, plusplus:true, regexp:true, undef:true, strict:true,
      sub:false, trailing:true */
 
-var _,
+let _,
     /**
      * NodeJS module for unit testing.
      * @namespace
@@ -93,7 +93,7 @@ var _,
        * @return {!TSyntacticCodeUnit} A function that is able to
        *     initiate the traversal from a given source element.
        */
-      var fLambda = function() {
+      let fLambda = function() {
         return oWalker.walk(oSourceElement);
       };
 
@@ -123,7 +123,7 @@ var _,
      *     place, the resulting ECMAScript program.
      */
     cAssert = function(oUnitTest) {
-      var _,
+      let _,
           /**
            * An array-like object representing the <abbr title=
            * "abstract syntax tree">AST</abbr> obtained after consolidation.
